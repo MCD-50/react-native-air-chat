@@ -10,7 +10,7 @@ import {
 
 const styles = StyleSheet.create({
   container: {
-    height: 44,
+    height: 50,
     justifyContent: 'flex-end',
   },
 });
