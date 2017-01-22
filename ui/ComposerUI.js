@@ -10,15 +10,24 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 10,
     fontSize: 16,
+    marginTop: Platform.select({
+      ios: 6,
+      android: 0,
+    }),
+    marginBottom: Platform.select({
+      ios: 5,
+      android: 3,
+    }),
   },
+
 });
 
 
 const defaultProps = {
   onChange: () => { },
   composerHeight: Platform.select({
-    ios: 33,
-    android: 41,
+    ios: 40,
+    android: 48,
   }),
   text: '',
   placeholder: 'Message',

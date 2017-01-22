@@ -1,0 +1,132 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/shachi/.nvm/versions/node/v6.0.0/bin/node',
+1 verbose cli   '/home/shachi/.nvm/versions/node/v6.0.0/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.8.6
+3 info using node@v6.0.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/home/shachi/ReactApps/react-native-air-chat',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /home/shachi/.npm/react-native-air-chat/0.0.2/package.tgz not in flight; packing
+9 verbose correctMkdir /home/shachi/.npm correctMkdir not in flight; initializing
+10 info lifecycle react-native-air-chat@0.0.2~prepublish: react-native-air-chat@0.0.2
+11 silly lifecycle react-native-air-chat@0.0.2~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/home/shachi/.npm/react-native-air-chat/0.0.2/package.tgz',
+12 verbose tar pack   '/home/shachi/ReactApps/react-native-air-chat' ]
+13 verbose tarball /home/shachi/.npm/react-native-air-chat/0.0.2/package.tgz
+14 verbose folder /home/shachi/ReactApps/react-native-air-chat
+15 verbose addLocalTarball adding from inside cache /home/shachi/.npm/react-native-air-chat/0.0.2/package.tgz
+16 verbose correctMkdir /home/shachi/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd react-native-air-chat@0.0.2
+18 verbose afterAdd /home/shachi/.npm/react-native-air-chat/0.0.2/package/package.json not in flight; writing
+19 verbose correctMkdir /home/shachi/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /home/shachi/.npm/react-native-air-chat/0.0.2/package/package.json written
+21 silly publish { name: 'react-native-air-chat',
+21 silly publish   version: '0.0.2',
+21 silly publish   description: 'Inspired by Gifted chat. Chat UI for react native.',
+21 silly publish   main: 'index.js',
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/MCD-50/react-native-air-chat.git' },
+21 silly publish   keywords:
+21 silly publish    [ 'android',
+21 silly publish      'ios',
+21 silly publish      'react-native',
+21 silly publish      'react',
+21 silly publish      'react-component',
+21 silly publish      'messenger',
+21 silly publish      'message',
+21 silly publish      'chat' ],
+21 silly publish   author: { name: 'Ayush Shukla' },
+21 silly publish   license: 'MIT',
+21 silly publish   bugs: { url: 'https://github.com/MCD-50/react-native-air-chat/issues' },
+21 silly publish   homepage: 'https://github.com/MCD-50/react-native-air-chat#readme',
+21 silly publish   scripts: { lint: 'eslint . --ext .js,.jsx' },
+21 silly publish   devDependencies:
+21 silly publish    { eslint: '~3.12.2',
+21 silly publish      'eslint-config-airbnb': '~13.0.0',
+21 silly publish      'eslint-config-cooperka': '~0.2.3',
+21 silly publish      'eslint-plugin-import': '~2.2.0',
+21 silly publish      'eslint-plugin-jsx-a11y': '~2.2.3',
+21 silly publish      'eslint-plugin-react': '~6.8.0',
+21 silly publish      'eslint-plugin-react-native': '~2.2.1' },
+21 silly publish   dependencies:
+21 silly publish    { '@exponent/react-native-action-sheet': 'git+https://github.com/FaridSafi/react-native-action-sheet.git',
+21 silly publish      md5: '^2.1.0',
+21 silly publish      moment: '^2.13.0',
+21 silly publish      'react-native-communications': '^2.1.0',
+21 silly publish      'react-native-invertible-scroll-view': '^1.0.0',
+21 silly publish      'react-native-lightbox': 'github:oblador/react-native-lightbox#c84a8543d4511fe6a44c3d7820747c9c1bddd875',
+21 silly publish      'react-native-parsed-text': '^0.0.15',
+21 silly publish      shallowequal: '^0.2.2' },
+21 silly publish   readme: '# Air Chat\nChat UI for react native.\nInspired by Gifted chat\n\n## Dependency\nReact Native minimum version `0.29.0`\n\n## Installation\n`npm install react-native-air-chat --save`\n\n## Android installation\n- Add `android:windowSoftInputMode="adjustResize"` to your Android Manifest `android/app/src/main/AndroidManifest.xml`\n```xml\n<!-- ... -->\n<activity\n  android:name=".MainActivity"\n  android:label="@string/app_name"\n  android:windowSoftInputMode="adjustResize"\n  android:configChanges="keyboard|keyboardHidden|orientation|screenSize">\n<!-- ... -->\n```\n\n- If you plan to use `AirChat` inside a `Modal`, see [#200](https://github.com/FaridSafi/react-native-gifted-chat/issues/200)\n\n\n## Example\n```jsx\nimport { AirChatUI } from \'react-native-air-chat\';\n\nclass Example extends React.Component {\n  constructor(props) {\n    super(props);\n    //pass props in route object while navigating to this page\n\n    //isPrivate : true || false\n    //isPrivate set true if in private chat else set false\n\n    //isNotification : false || true\n    //isNotification set true to display notification in middle instead of chat bubble else false\n\n    this.state = {messages: [], \n    id: this.props.route.id, \n    isPrivate : this.props.route.isPrivate, \n    isNotification: this.props.route.isNotification, };\n    this.onSend = this.onSend.bind(this);\n  }\n  componentWillMount() {\n    this.setState({\n      messages: [\n        {\n          _id: 1,\n          text: \'Hello developer\',\n          createdAt: new Date(Date.UTC(2016, 7, 30, 17, 20, 0)),\n          user: {\n            _id: 2,\n            name: \'React Native\',\n            isPrivate : this.state.isPrivate,\n          },\n          isNotification : this.props.isNotification,\n        },\n      ],\n    });\n  }\n  onSend(messages = []) {\n    this.setState((previousState) => {\n      return {\n        messages: AirChatUI.append(previousState.messages, messages),\n      };\n    });\n  }\n  render() {\n    return (\n      <AirChatUI\n        messages={this.state.messages}\n        onSend={this.onSend}\n        user={{\n          _id: 1,\n          name : \'User\',\n          isPrivate : this.state.isPrivate\n        }}\n      />\n    );\n  }\n}\n\n```',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: 'fa13b10de4ae56c8a9d7e9da03d46dee00fba874',
+21 silly publish   _id: 'react-native-air-chat@0.0.2',
+21 silly publish   _shasum: '635435035e209f4f20bc869c4f7ac9e2fc33ca0c',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name react-native-air-chat
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'react-native-air-chat',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   name: 'react-native-air-chat',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/react-native-air-chat
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /home/shachi/.npm/react-native-air-chat/0.0.2/package.tgz
+30 verbose request uri https://registry.npmjs.org/react-native-air-chat
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 1:51:55 PM
+33 verbose request using bearer token for auth
+34 verbose request id 233cdd45f87d9e59
+35 http request PUT https://registry.npmjs.org/react-native-air-chat
+36 http 403 https://registry.npmjs.org/react-native-air-chat
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '95',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Sun, 22 Jan 2017 08:22:18 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-ams4423-AMS',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1485073316.776997,VS0,VE22051',
+37 verbose headers   vary: 'Accept-Encoding' }
+38 verbose request invalidating /home/shachi/.npm/registry.npmjs.org/react-native-air-chat on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 0.0.2." : react-native-air-chat
+40 verbose stack     at makeError (/home/shachi/.nvm/versions/node/v6.0.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/home/shachi/.nvm/versions/node/v6.0.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+40 verbose stack     at Request._callback (/home/shachi/.nvm/versions/node/v6.0.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+40 verbose stack     at Request.self.callback (/home/shachi/.nvm/versions/node/v6.0.0/lib/node_modules/npm/node_modules/request/request.js:199:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (/home/shachi/.nvm/versions/node/v6.0.0/lib/node_modules/npm/node_modules/request/request.js:1036:10)
+40 verbose stack     at emitOne (events.js:101:20)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/home/shachi/.nvm/versions/node/v6.0.0/lib/node_modules/npm/node_modules/request/request.js:963:12)
+41 verbose statusCode 403
+42 verbose pkgid react-native-air-chat
+43 verbose cwd /home/shachi/ReactApps/react-native-air-chat
+44 error Linux 4.4.0-59-generic
+45 error argv "/home/shachi/.nvm/versions/node/v6.0.0/bin/node" "/home/shachi/.nvm/versions/node/v6.0.0/bin/npm" "publish"
+46 error node v6.0.0
+47 error npm  v3.8.6
+48 error code E403
+49 error "You cannot publish over the previously published version 0.0.2." : react-native-air-chat
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]

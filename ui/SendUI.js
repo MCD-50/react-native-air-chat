@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
   container: {
     height: 44,
     justifyContent: 'flex-end',
-
   },
 });
 
