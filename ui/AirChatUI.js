@@ -36,7 +36,7 @@ const MIN_COMPOSER_HEIGHT = Platform.select({
   android: 48,
 });
 const MAX_COMPOSER_HEIGHT = 100;
-const MIN_INPUT_TOOLBAR_HEIGHT = 44;
+const MIN_INPUT_TOOLBAR_HEIGHT = 50;
 
 const styles = StyleSheet.create({
   container: {

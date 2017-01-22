@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   accessory: {
-    height: 44,
+    height: 50,
   },
 });
 
