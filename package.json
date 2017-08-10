@@ -1,6 +1,6 @@
 {
   "name": "react-native-air-chat",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Inspired by Gifted chat. Chat UI for react native.",
   "main": "index.js",
   "repository": {
