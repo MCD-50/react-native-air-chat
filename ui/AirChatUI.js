@@ -93,7 +93,6 @@ const defaultProps = {
 		name: null
 	},
 	attachments: [],
-	communication: null,
 	alert:false,
 	bottomOffset: 0,
 	isLoadingEarlier: false,
@@ -127,7 +126,6 @@ const propTypes = {
 	renderTime: React.PropTypes.func,
 	user: React.PropTypes.object,
 	attachments:React.PropTypes.array,
-	communication: React.PropTypes.object,
 	alert:React.PropTypes.bool,
 	bottomOffset: React.PropTypes.number,
 	isLoadingEarlier: React.PropTypes.bool,
@@ -395,7 +393,6 @@ class AirChatUI extends React.Component {
 			return {
 				...message,
 				user: this.props.user,
-				communication: this.props.communication,
 				attachments: this.props.attachments,
 				alert:this.props.alert,
 				createdAt: new Date(),

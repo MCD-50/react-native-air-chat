@@ -80,15 +80,14 @@ class MessageUI extends React.Component {
 	}
 
 	renderNotification() {
-		if ((this.props.currentMessage.communication && this.props.currentMessage.communication.communication_type == "Comment") || this.props.currentMessage.alert) {
+		if (this.props.currentMessage.alert) {
 			return <NoticationUI currentMessage={this.props.currentMessage} />;
 		}
 		return null;
 	}
 
 	renderBubble() {
-		if (this.props.currentMessage.alert ||
-			(this.props.currentMessage.communication && this.props.currentMessage.communication.communication_type == "Comment")) {
+		if (this.props.currentMessage.alert) {
 			return null;
 		} else {
 			const { containerStyle, ...bubbleProps } = this.props;

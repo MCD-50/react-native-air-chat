@@ -184,7 +184,6 @@ class MessageTextUI extends React.Component {
 					<Text style={[styles[props.position].header, props.headerStyle[props.position], { color: this.getHeaderColor(props.currentMessage.user.name) }]}>
 						{this.capitalize(props.currentMessage.user.name)}
 					</Text>
-					<Text style={{ marginTop: 5, fontSize: 12 }}>Subject - {props.currentMessage.communication.subject}</Text>
 				</View>
 			);
 		}
