@@ -10,14 +10,17 @@ import ActionsUI from './ActionsUI.js';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FFFFFF',
+    borderTopWidth: 0.2,
+    borderTopColor: '#111111',
+    backgroundColor: '#f7f7fa',
   },
   primary: {
     flexDirection: 'row',
     alignItems: 'flex-end',
   },
+  
   accessory: {
-    height: 50,
+    height: 51,
   },
 });
 
@@ -93,6 +96,8 @@ class InputToolbarUI extends React.Component {
       </View>
     );
   }
+
+ 
 }
 
 InputToolbarUI.propTypes = propTypes;

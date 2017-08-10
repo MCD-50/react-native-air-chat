@@ -12,10 +12,7 @@ const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 5,
-        marginLeft: 10,
-        marginRight: 10,
-        marginBottom: 5,
+        margin: 10,
     },
     wrapper: {
         backgroundColor: '#B1BEC6',
@@ -27,9 +24,9 @@ const styles = StyleSheet.create({
     },
     text: {
         backgroundColor: 'transparent',
-        color: '#FDFDFD',
-        fontSize: 11,
-        fontWeight: '400',
+        color: '#ababab',
+        fontSize: 12,
+        fontWeight: '300',
     },
 });
 
@@ -66,17 +63,13 @@ class DayUI extends React.Component {
     render() {
         if (this.props.previousMessage.createdAt === undefined || !isSameDay(this.props.currentMessage, this.props.previousMessage)) {
             return (<View style={[styles.container, this.props.containerStyle]}>
-                <View style={[styles.wrapper, this.props.wrapperStyle]}>
-                    <Text style={[styles.text, this.props.textStyle]}>
-                        {moment(this.props.currentMessage.createdAt).locale(this.context.getLocale()).format('ll').toUpperCase()}
-                    </Text>
-                </View>
+                <Text style={[styles.text, this.props.textStyle]}>
+                    {moment(this.props.currentMessage.createdAt).locale(this.context.getLocale()).format('ll')}
+                </Text>
             </View>);
         } else {
             return null;
         }
-
-
     }
 }
 

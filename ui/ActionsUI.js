@@ -14,12 +14,14 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginBottom: 10,
   },
+
   wrapper: {
     borderRadius: 13,
     borderColor: '#b2b2b2',
     borderWidth: 2,
     flex: 1,
   },
+
   iconText: {
     color: '#b2b2b2',
     fontWeight: 'bold',

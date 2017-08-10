@@ -10,8 +10,8 @@ import {
 
 const styles = StyleSheet.create({
   container: {
-    height: 50,
     justifyContent: 'flex-end',
+    alignItems: 'stretch'
   },
 });
 
@@ -31,15 +31,9 @@ const propTypes = {
   textStyle: Text.propTypes.style,
 };
 
-
 class SendUI extends React.Component {
   render() {
-
-
-
     if (this.props.text.trim().length > 0) {
-
-     
       return (<TouchableOpacity
         style={[styles.container, this.props.containerStyle]}
         onPress={() => { this.props.onSend({ text: this.props.text.trim() }, true); } }
@@ -48,7 +42,6 @@ class SendUI extends React.Component {
           <Text style={{
             fontSize: 25,
             color: '#527DA3',
-            fontFamily: 'Material Icons',
             fontWeight: 'normal',
             fontStyle: 'normal',
           }}>Send</Text>
@@ -56,7 +49,7 @@ class SendUI extends React.Component {
       </TouchableOpacity>);
     }
     else {
-      
+
       return (
         <TouchableOpacity
           style={[styles.container, this.props.containerStyle]}
