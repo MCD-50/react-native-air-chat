@@ -8,10 +8,10 @@ import {
 import BubbleUI from './BubbleUI.js';
 import DayUI from './DayUI.js';
 import NoticationUI from './NotificationUI.js';
+import ButtonUI from './ButtonUI.js';
+
 
 import { isSameUser, isSameDay, warnDeprecated } from './UtilsUI.js';
-
-
 const styles = {
 	left: StyleSheet.create({
 		container: {
@@ -42,6 +42,11 @@ const defaultProps = {
 	nextMessage: {},
 	previousMessage: {},
 	user: {},
+	options: {
+		link:'',
+		hasButton: true,
+		buttons: []
+	},
 	containerStyle: {},
 };
 
@@ -55,6 +60,7 @@ const propTypes = {
 	nextMessage: React.PropTypes.object,
 	previousMessage: React.PropTypes.object,
 	user: React.PropTypes.object,
+	options: React.PropTypes.object,
 	containerStyle: React.PropTypes.shape({
 		left: View.propTypes.style,
 		right: View.propTypes.style,
@@ -69,7 +75,6 @@ class MessageUI extends React.Component {
 			if (this.props.renderDay) {
 				return this.props.renderDay({
 					...dayProps,
-					//TODO: remove in next major release
 					isSameUser: warnDeprecated(isSameUser),
 					isSameDay: warnDeprecated(isSameDay)
 				});
@@ -82,6 +87,14 @@ class MessageUI extends React.Component {
 	renderNotification() {
 		if (this.props.currentMessage.alert) {
 			return <NoticationUI currentMessage={this.props.currentMessage} />;
+		}
+		return null;
+	}
+
+
+	renderButtons() {
+		if (this.props.currentMessage.options.buttons.length > 0) {
+			return <ButtonUI currentMessage={this.props.currentMessage} />;
 		}
 		return null;
 	}
@@ -114,6 +127,7 @@ class MessageUI extends React.Component {
 				}]}>
 					{this.renderBubble()}
 				</View>
+				{this.renderButtons()}
 			</View>
 		);
 	}

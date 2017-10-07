@@ -14,6 +14,7 @@ import moment from 'moment';
 import { isSameDay, isSameUser, warnDeprecated } from './UtilsUI.js';
 
 import ActionsUI from './ActionsUI.js';
+import ButtonUI from './ButtonUI.js';
 import BubbleUI from './BubbleUI.js';
 import MessageImageUI from './MessageImageUI.js';
 import MessageTextUI from './MessageTextUI.js';
@@ -93,6 +94,7 @@ const defaultProps = {
 		name: null
 	},
 	options: {
+		link:'',
 		hasButton: false,
 		buttons: [],
 	},
@@ -573,6 +575,7 @@ export {
 	AirChatUI,
 	ActionsUI,
 	BubbleUI,
+	ButtonUI,
 	MessageImageUI,
 	MessageTextUI,
 	ComposerUI,
