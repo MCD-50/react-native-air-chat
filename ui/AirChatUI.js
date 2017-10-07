@@ -92,8 +92,12 @@ const defaultProps = {
 		_id: null,
 		name: null
 	},
+	options: {
+		hasButton: false,
+		buttons: [],
+	},
 	attachments: [],
-	alert:false,
+	alert: false,
 	bottomOffset: 0,
 	isLoadingEarlier: false,
 };
@@ -125,8 +129,9 @@ const propTypes = {
 	renderSend: React.PropTypes.func,
 	renderTime: React.PropTypes.func,
 	user: React.PropTypes.object,
-	attachments:React.PropTypes.array,
-	alert:React.PropTypes.bool,
+	attachments: React.PropTypes.array,
+	alert: React.PropTypes.bool,
+	options: React.PropTypes.object,
 	bottomOffset: React.PropTypes.number,
 	isLoadingEarlier: React.PropTypes.bool,
 	keyboardShouldPersistTaps: React.PropTypes.oneOf(['always', 'never', 'handled']),
@@ -393,8 +398,9 @@ class AirChatUI extends React.Component {
 			return {
 				...message,
 				user: this.props.user,
+				options: this.props.options,
 				attachments: this.props.attachments,
-				alert:this.props.alert,
+				alert: this.props.alert,
 				createdAt: new Date(),
 				_id: Math.round(Math.random() * 1000000),
 			};
@@ -435,7 +441,7 @@ class AirChatUI extends React.Component {
 		this.setState((previousState) => {
 			return {
 				text: '',
-				composerHeight: MIN_COMPOSER_HEIGHT,
+				composerHeight: !this.props.options.hasButton ? MIN_COMPOSER_HEIGHT : 0,
 				messagesContainerHeight: this.prepareMessagesContainerHeight(this.getMaxHeight() - this.getMinInputToolbarHeight() - this.getKeyboardHeight() + this.getBottomOffset()),
 			};
 		});
@@ -462,7 +468,7 @@ class AirChatUI extends React.Component {
 		this.setState((previousState) => {
 			return {
 				text: newText,
-				composerHeight: newComposerHeight,
+				composerHeight: !this.props.options.hasButton ? newComposerHeight : 0,
 				messagesContainerHeight: this.prepareMessagesContainerHeight(newMessagesContainerHeight),
 			};
 		});
@@ -472,7 +478,7 @@ class AirChatUI extends React.Component {
 		const inputToolbarProps = {
 			...this.props,
 			text: this.state.text,
-			composerHeight: Math.max(MIN_COMPOSER_HEIGHT, this.state.composerHeight),
+			composerHeight: !this.props.options.hasButton ? Math.max(MIN_COMPOSER_HEIGHT, this.state.composerHeight) : 0,
 			onChange: this.onType,
 			onSend: this.onSend,
 		};
@@ -480,6 +486,7 @@ class AirChatUI extends React.Component {
 		if (this.props.renderInputToolbar) {
 			return this.props.renderInputToolbar(inputToolbarProps);
 		}
+
 		return (
 			<InputToolbarUI
 				{...inputToolbarProps}
@@ -572,6 +579,7 @@ export {
 	DayUI,
 	InputToolbarUI,
 	LoadEarlierUI,
+	MessageContainerUI,
 	MessageUI,
 	SendUI,
 	TimeUI,
