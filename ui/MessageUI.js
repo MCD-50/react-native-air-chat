@@ -42,11 +42,6 @@ const defaultProps = {
 	nextMessage: {},
 	previousMessage: {},
 	user: {},
-	options: {
-		link:'',
-		hasButton: true,
-		buttons: []
-	},
 	containerStyle: {},
 };
 
@@ -60,7 +55,6 @@ const propTypes = {
 	nextMessage: React.PropTypes.object,
 	previousMessage: React.PropTypes.object,
 	user: React.PropTypes.object,
-	options: React.PropTypes.object,
 	containerStyle: React.PropTypes.shape({
 		left: View.propTypes.style,
 		right: View.propTypes.style,
@@ -94,7 +88,7 @@ class MessageUI extends React.Component {
 
 	renderButtons() {
 		if (this.props.currentMessage.options.buttons.length > 0) {
-			return <ButtonUI currentMessage={this.props.currentMessage} />;
+			return <ButtonUI currentMessage={this.props} />;
 		}
 		return null;
 	}
@@ -126,6 +120,7 @@ class MessageUI extends React.Component {
 					marginBottom: isSameUser(this.props.currentMessage, this.props.nextMessage) ? 2 : 10,
 				}]}>
 					{this.renderBubble()}
+					
 				</View>
 				{this.renderButtons()}
 			</View>

@@ -61,6 +61,7 @@ const defaultProps = {
 	onSend: () => { },
 	onRespond: () => { },
 	onLoadEarlier: () => { },
+	onButtonClick: () => { },
 	loadEarlier: false,
 	locale: null,
 	isAnimated: Platform.select({
@@ -94,7 +95,7 @@ const defaultProps = {
 		name: null
 	},
 	options: {
-		link:'',
+		link: '',
 		hasButton: false,
 		buttons: [],
 	},
@@ -107,6 +108,7 @@ const defaultProps = {
 const propTypes = {
 	messages: React.PropTypes.array,
 	onSend: React.PropTypes.func,
+	onButtonClick: React.PropTypes.func,
 	onRespond: React.PropTypes.func,
 	onLoadEarlier: React.PropTypes.func,
 	loadEarlier: React.PropTypes.bool,
@@ -165,6 +167,7 @@ class AirChatUI extends React.Component {
 		this.onKeyboardDidHide = this.onKeyboardDidHide.bind(this);
 		this.onType = this.onType.bind(this);
 		this.onSend = this.onSend.bind(this);
+		this.onButtonClick = this.onButtonClick.bind(this);
 		this.onRespond = this.onRespond.bind(this);
 		this.getLocale = this.getLocale.bind(this);
 
@@ -371,6 +374,7 @@ class AirChatUI extends React.Component {
 		const props = {
 			...this.props,
 			onRespond: this.onRespond,
+			onButtonClick: this.onButtonClick,
 		}
 
 		return (
@@ -429,6 +433,10 @@ class AirChatUI extends React.Component {
 		this.props.onRespond(message);
 	}
 
+	onButtonClick(message, text){
+		this.props.onButtonClick(message, text);
+	}
+
 	/*
 	What about row height * item index? Let's say you want to scroll to 20th element in your ListView. Each row has height: 50. We calculate an offset at 20th element by using formula I mentioned above: 50 * 20 = 1000. Then use scrollTo(0, 1000) and you'll scroll to the desired element.
 
@@ -443,7 +451,7 @@ class AirChatUI extends React.Component {
 		this.setState((previousState) => {
 			return {
 				text: '',
-				composerHeight: !this.props.options.hasButton ? MIN_COMPOSER_HEIGHT : 0,
+				composerHeight: MIN_COMPOSER_HEIGHT,
 				messagesContainerHeight: this.prepareMessagesContainerHeight(this.getMaxHeight() - this.getMinInputToolbarHeight() - this.getKeyboardHeight() + this.getBottomOffset()),
 			};
 		});
@@ -470,7 +478,7 @@ class AirChatUI extends React.Component {
 		this.setState((previousState) => {
 			return {
 				text: newText,
-				composerHeight: !this.props.options.hasButton ? newComposerHeight : 0,
+				composerHeight: newComposerHeight,
 				messagesContainerHeight: this.prepareMessagesContainerHeight(newMessagesContainerHeight),
 			};
 		});
@@ -480,7 +488,7 @@ class AirChatUI extends React.Component {
 		const inputToolbarProps = {
 			...this.props,
 			text: this.state.text,
-			composerHeight: !this.props.options.hasButton ? Math.max(MIN_COMPOSER_HEIGHT, this.state.composerHeight) : 0,
+			composerHeight: Math.max(MIN_COMPOSER_HEIGHT, this.state.composerHeight),
 			onChange: this.onType,
 			onSend: this.onSend,
 		};

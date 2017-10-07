@@ -21,7 +21,7 @@ const defaultProps = {
 	label: 'Send',
 	containerStyle: {},
 	options: {
-		link:'',
+		link: '',
 		hasButton: false,
 		buttons: [],
 	},
@@ -38,18 +38,28 @@ const propTypes = {
 };
 
 class ButtonUI extends React.Component {
+
 	render() {
-		const buttons = this.props.currentMessage.options.buttons.map(x => {
-			return (<TouchableOpacity
-				style={[styles.container, this.props.containerStyle]}
-				onPress={() => { this.props.currentMessage.onButtonClick(this.props.currentMessage); }}
+		console.log(this.props);
+		const buttons = this.props.currentMessage.options.buttons.map((x, key) => {
+			return (
+				<TouchableOpacity
+				key={key}
+				style={[styles.container, this.props.currentMessage.containerStyle]}
+				onPress={() =>{this.props.currentMessage.onButtonClick(this.props.currentMessage, x)}}
 				accessibilityTraits="button">
-				<View style={{ marginLeft: 5, marginRight: 10, marginBottom: 10 }}>
-					<Text style={{ fontSize: 25, color: '#527DA3', fontWeight: 'normal', fontStyle: 'normal' }}></Text>
+				<View style={{ marginLeft: 5, marginRight: 10, padding:10, marginBottom: 10, maxWidth:150,
+					backgroundColor:'#f0f0f0', 
+				borderBottomLeftRadius: 16,
+				borderBottomRightRadius: 16,
+				borderTopLeftRadius: 16,
+				borderTopRightRadius: 16,
+				justifyContent:'center'}}>
+					<Text style={{ color: 'black', fontWeight: 'normal', fontStyle: 'normal' }}> {x} </Text>
 				</View>
 			</TouchableOpacity>)
 		})
-		return buttons;
+		return (<View style={{flex:1, flexDirection:'column', flexWrap:'wrap'}} >{ buttons }</View>);
 	}
 }
 
